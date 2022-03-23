@@ -20,5 +20,57 @@ public class Joc {
 		char [][] t=new char[filas][filas];
 		char [][] t2=new char[filas][filas];
 
-    }
-}    
+		System.out.println("Cuantes colonies voldras?");
+		int colonies=e.nextInt();
+		//manual
+		if (eleccio=='m') {
+			
+			manual(colonies, t);
+			
+			imprimirt(t);
+	
+			System.out.println("Cuantes instancies desitges?");
+			int instan=e.nextInt();
+			int s=1;
+			
+			while(s<=instan) {
+				vaciot2(t2);
+				
+				t2(t, t2);
+				imprimirt(t);
+				System.out.println("instancia nº -->" + s);
+				System.out.println();
+				t=t2;
+			s++;
+			}
+	    }
+		
+		//automatic
+		else if (eleccio=='a') {
+			
+			auto(colonies, t);
+			
+			imprimirt(t);
+
+			System.out.println("Cuantes instancies desitges?");
+			int instan=e.nextInt();
+			int s=1;
+			while(s<=instan) {
+				vaciot2(t2);
+				imprimirt2(t2);
+				System.out.println();
+				
+				t2(t, t2);
+				t=t2;
+				imprimirt(t);
+				System.out.println("instancia nº -->" + s);
+				System.out.println();
+			s++;
+			}
+		}
+		
+		else {
+			System.out.println("Introdueix 'm' per manual o 'a' per automatic!!!");
+			System.exit(0);
+		}
+	}
