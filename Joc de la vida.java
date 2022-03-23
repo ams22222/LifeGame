@@ -74,3 +74,80 @@ public class Joc {
 			System.exit(0);
 		}
 	}
+	
+	public int dimensio() {
+		int dimensio=e.nextInt();
+		return dimensio;
+	}
+	
+	public char [][] t2(char [][] t, char [][] t2) {
+		int nV=0;
+		for(int fila=0;fila<t.length;fila++) {
+		  for(int col=0; col<t.length;col++) {
+			  nV=0;
+			  if(fila+1<t.length) {
+				  if(t[	fila+1][col]=='x') {
+					  nV++;
+				  }
+			  }
+			  if(fila-1>=0) {
+				  if(t[fila-1][col]=='x') {
+					  nV++;
+			  	  }
+			  }
+			  if(col+1<t.length) {	  
+				  if(t[fila][col+1]=='x') {
+					  nV++;
+				  }
+			  }
+			  if(col-1>=0) {	  
+				  if(t[fila][col-1]=='x') {
+					  nV++;
+				  }	
+			  }
+			  //Diagonals
+			  if(fila+1<t.length && col+1<t.length) {
+				  if(t[fila+1][col+1]=='x') {
+					  nV++;
+				  }	
+			  }
+			  
+			  if(fila+1<t.length && col-1>=0) {
+				  if(t[fila+1][col-1]=='x') {
+					  nV++;
+				  }	
+			  }
+			  
+			  if(fila-1>=0 && col+1<t.length) {
+				  if(t[fila-1][col+1]=='x') {
+					  nV++;
+				  }	
+			  }
+			  
+			  if(fila-1>=0 && col-1>=0) {
+				  if(t[fila-1][col-1]=='x') {
+					  nV++;
+				  }	
+			  }
+			  //Creacio-destruccio
+			  if (nV==3) {
+				  t2[fila][col]='x';
+			  }
+			  else if (nV==2) {
+				  if(t[fila][col]=='x') {
+					  t2[fila][col]='x';
+				  }
+				  else {
+					  t2[fila][col]=' ';
+				  }
+			  }
+			  else if (nV>3) {
+				  t2[fila][col]=' ';
+			  }
+			  else  if (nV<2) {
+				  t2[fila][col]=' ';
+			  }
+		  }
+		}
+		return t2;
+	}
