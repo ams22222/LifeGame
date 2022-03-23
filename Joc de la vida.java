@@ -151,3 +151,152 @@ public class Joc {
 		}
 		return t2;
 	}
+	public static void imprimirt(char [][] t) {
+		for(int fila=0;fila<t.length;fila++) {
+			for(int col=0; col<t.length; col++) {
+				if(t[fila][col] != 'x') {
+					System.out.print("- ");
+				}
+				else {
+					System.out.print(t[fila][col]+" ");
+				}
+			}
+			System.out.println();
+			}
+	}
+	public static void imprimirt2(char [][] t) {
+		for(int fila=0;fila<t.length;fila++) {
+			for(int col=0; col<t.length; col++) {
+				if(t[fila][col] != 'x') {
+					System.out.print("- ");
+				}
+				else {
+					System.out.print(t[fila][col]+" ");
+				}
+			}
+			System.out.println();
+			}
+	}	
+	
+	public static void manual(int colonies, char [][] t){
+		Scanner e=new Scanner(System.in);
+		int per=0;
+		int fildcol=0, coldcol=0;
+		while(per<colonies) {
+			System.out.println("Introdueix en quina fila vols inserir l'origen de la colonia: [1-"+t.length+"]");
+			fildcol=e.nextInt()-1;
+			System.out.println("Introdueix en quina columne vols inserir l'origen de la colonia: [1-"+t.length+"]");
+			coldcol=e.nextInt()-1;
+			
+			t[fildcol][coldcol]='x';
+			
+			validacio(fildcol, coldcol, t);
+			
+			
+			if(per<colonies) {
+				System.out.println();
+				System.out.println("Seguent colonia!");
+			}
+			
+			per++;
+		}
+	}
+	
+	public static void auto(int colonies, char [][] t) {
+		int acol=0;
+		int fildcol=0, coldcol=0;
+		while(acol<colonies) {
+			fildcol=(int)(Math.random()*(0 + (t.length)));
+			coldcol=(int)(Math.random()*(0 + (t.length)));
+			t[fildcol][coldcol]='x';
+			
+			validacio(fildcol, coldcol, t);
+			acol++;
+
+
+		}
+	}
+	
+	public static void validacio(int fildcol, int coldcol, char [][] t) {
+		int nV=0, rand=0;
+		if((fildcol!=0 && coldcol!=0) && (fildcol!=0 && coldcol!=t.length)  && (fildcol!=t.length && coldcol!=t.length)  && (fildcol!=t.length && coldcol!=0)) {
+			while (nV<5) {
+				if(nV!=5 && fildcol-1>=0 && coldcol-1>=0) {
+					rand=(int)(Math.random()*2);
+					if(rand==1  && t[fildcol-1][coldcol-1]!='x' ) {
+						t[fildcol-1][coldcol-1]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5 && fildcol-1>=0 && coldcol+1<t.length) {
+					rand=(int)(Math.random()*2);
+					if(rand==1  && t[fildcol-1][coldcol+1]!='x'  ) {
+						t[fildcol-1][coldcol+1]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5 && fildcol-1>=0) {
+					rand=(int)(Math.random()*2);
+					if(rand==1  && t[fildcol-1][coldcol]!='x' ) {
+						t[fildcol-1][coldcol]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5  && coldcol-1>=0) {
+					rand=(int)(Math.random()*2);
+					if(rand==1 && t[fildcol][coldcol-1]!='x' ) {
+						t[fildcol][coldcol-1]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5  && coldcol+1<t.length) {
+					rand=(int)(Math.random()*2);
+					if(rand==1 && t[fildcol][coldcol+1]!='x' ) {
+						t[fildcol][coldcol+1]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5  && fildcol+1<t.length && coldcol-1>=0) {
+					rand=(int)(Math.random()*2);
+					if(rand==1  && t[fildcol+1][coldcol-1]!='x') {
+						t[fildcol+1][coldcol-1]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5  && fildcol+1<t.length && coldcol+1<t.length) {
+					rand=(int)(Math.random()*2);
+					if(rand==1 && t[fildcol+1][coldcol+1]!='x' ) {
+						t[fildcol+1][coldcol+1]='x';
+						nV++;
+					}
+				}
+				
+				if(nV!=5 && fildcol+1<t.length) {
+					rand=(int)(Math.random()*2);
+					if(rand==1  && t[fildcol+1][coldcol]!='x' ) {
+						t[fildcol+1][coldcol]='x';
+						nV++;
+					}
+				}
+			}
+		}
+		else {
+			System.out.println("No es pot generar una colonia en un raco!!!");
+		}
+	}
+	
+	public static void vaciot2(char[][] t2) {
+		for(int i=0;i<t2.length;i++) {
+			for(int j=0;j<t2.length;j++) {
+				t2[i][j]=0;
+			}
+		}
+	}
+}
+
