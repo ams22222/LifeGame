@@ -19,6 +19,7 @@ public class Joc {
 		
 		char [][] t=new char[filas][filas];
 		char [][] t2=new char[filas][filas];
+<<<<<<< HEAD
 
 		System.out.println("Cuantes colonies voldras?");
 		int colonies=e.nextInt();
@@ -299,4 +300,3 @@ public class Joc {
 		}
 	}
 }
-
